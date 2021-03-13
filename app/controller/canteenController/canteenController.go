@@ -8,15 +8,15 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Flow(content *gin.Context) {
+func Flow(context *gin.Context) {
 	data, err := canteenService.FetchFlow()
 	if err == nil {
 		utils.ContextDataResponseJson(
-			content,
+			context,
 			utils.SuccessResponseJson(data))
 	} else {
 		utils.ContextDataResponseJson(
-			content,
+			context,
 			utils.FailResponseJson(errors.RequestFailed, fmt.Sprintf("%v: %v", data, err)))
 	}
 }
